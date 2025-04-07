@@ -228,3 +228,8 @@ kubectl get all -n <namespace> -o wide
 ```
 kubectl apply -f myfile.yaml --dry-run=client
 ```
+
+## Contributors -
+- Srinivasarao Avagadda (srinivasarao.a@thoughtworks.com)
+- Tanya Agarwal (tanya.agarwal@thoughtworks.com)
+- Shubham Vashishtha (shubham.vashishtha@thoughtworks.com)
