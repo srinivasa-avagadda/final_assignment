@@ -120,3 +120,111 @@ Please install one of:
 ./activate-k8s-env.sh colima
 ```
 
+## General Info
+```
+kubectl version                           # Show client/server version
+kubectl cluster-info                      # Show cluster details
+kubectl config view                       # View kubeconfig settings
+kubectl config get-contexts               # Show available contexts
+kubectl config use-context <context>      # Switch context
+```
+
+## Work with Namespaces
+```
+kubectl get namespaces
+kubectl create namespace <name>
+kubectl delete namespace <name>
+```
+## Pods
+```
+kubectl get pods                          # All pods in default namespace
+kubectl get pods -n <namespace>           # Pods in a specific namespace
+kubectl describe pod <pod-name>           # Detailed info
+kubectl logs <pod-name>                   # Get logs
+kubectl logs -f <pod-name>                # Tail logs
+kubectl exec -it <pod-name> -- /bin/sh    # Open shell inside a pod
+```
+## Deployments
+```
+kubectl get deployments
+kubectl describe deployment <name>
+kubectl create -f deployment.yaml
+kubectl apply -f deployment.yaml
+kubectl delete deployment <name>
+kubectl rollout restart deployment <name>
+kubectl rollout status deployment <name>
+
+```
+## Services
+```
+kubectl get svc                           # Get services
+kubectl describe svc <name>
+kubectl port-forward svc/<name> <local>:<remote>  # Access service locally
+
+```
+## Test & Debug
+```
+kubectl run test-pod --image=busybox -it --rm -- /bin/sh
+kubectl get events                        # Recent events
+kubectl describe <resource> <name>        # Show details and events
+kubectl top pod                           # Pod resource usage
+kubectl top node                          # Node resource usage
+
+```
+## Secrets & ConfigMaps
+```
+kubectl run test-pod --image=busybox -it --rm -- /bin/sh
+kubectl get events                        # Recent events
+kubectl describe <resource> <name>        # Show details and events
+kubectl top pod                           # Pod resource usage
+kubectl top node                          # Node resource usage
+
+```
+## Apply & Delete Files
+```
+kubectl apply -f <file|folder>            # Create or update
+kubectl delete -f <file|folder>           # Delete from file
+
+```
+## Delete Resources
+```
+kubectl delete pod <name>
+kubectl delete deployment <name>
+kubectl delete svc <name>
+kubectl delete secret <name>
+kubectl delete all --all -n <namespace>   # ⚠️ Delete everything in a namespace
+
+```
+## Delete All Resources in Your Namespace
+```
+kubectl delete all --all -n my-namespace
+kubectl delete pvc --all -n my-namespace
+kubectl delete pv --all
+kubectl delete configmap --all -n my-namespace
+kubectl delete secret --all -n my-namespace
+kubectl delete namespace my-namespace
+
+```
+## Filter by Labels
+```
+kubectl get pods -l app=my-app
+kubectl get svc -l tier=backend
+
+```
+## Resource Usage (Metrics Server required)
+```
+kubectl get pods -l app=my-app
+kubectl get svc -l tier=backend
+
+```
+## YAML Output
+```
+kubectl get pod <name> -o yaml
+kubectl get svc <name> -o yaml
+kubectl get all -n <namespace> -o wide
+
+```
+## Pro Tip: Use --dry-run=client for testing!
+```
+kubectl apply -f myfile.yaml --dry-run=client
+```
